@@ -1,0 +1,204 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@font-face {
+  font-family: "Manga Temple";
+  src: url("/fonts/mangat.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manga Temple";
+  src: url("/fonts/mangati.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Manga Temple";
+  src: url("/fonts/mangatb.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: 36 44% 94%;
+  --foreground: 25 25% 15%;
+
+  --card: 33 40% 92%;
+  --card-foreground: 25 25% 15%;
+
+  --popover: 36 44% 94%;
+  --popover-foreground: 25 25% 15%;
+
+  --primary: 25 25% 15%;
+  --primary-foreground: 36 44% 96%;
+
+  --secondary: 25 30% 70%;
+  --secondary-foreground: 25 25% 15%;
+
+  --muted: 33 30% 88%;
+  --muted-foreground: 25 15% 38%;
+
+  --accent: 18 55% 55%;
+  --accent-foreground: 36 44% 96%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 36 44% 96%;
+
+  --border: 33 25% 82%;
+  --input: 33 25% 82%;
+  --ring: 18 55% 55%;
+
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 25 15% 10%;
+  --foreground: 36 30% 92%;
+  --card: 25 15% 14%;
+  --card-foreground: 36 30% 92%;
+  --popover: 25 15% 10%;
+  --popover-foreground: 36 30% 92%;
+  --primary: 36 30% 92%;
+  --primary-foreground: 25 25% 15%;
+  --secondary: 25 15% 30%;
+  --secondary-foreground: 36 30% 92%;
+  --muted: 25 10% 20%;
+  --muted-foreground: 36 20% 65%;
+  --accent: 18 55% 60%;
+  --accent-foreground: 25 25% 15%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 36 30% 92%;
+  --border: 25 10% 22%;
+  --input: 25 10% 22%;
+  --ring: 18 55% 60%;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Manga Temple", "Fraunces", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+  }
+  a {
+    transition: color 0.2s ease;
+  }
+}
+
+@utility link-underline {
+  text-decoration: underline;
+  text-decoration-color: hsl(var(--muted-foreground) / 0.4);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  &:hover {
+    text-decoration-color: hsl(var(--accent));
+    color: hsl(var(--accent));
+  }
+}
+
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  &:hover {
+    border-color: hsl(var(--accent) / 0.6);
+    color: hsl(var(--accent));
+  }
+}
+
+@utility work-card {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1rem;
+  margin: -1rem;
+  border-radius: 1rem;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: hsl(var(--card) / 0.7);
+  }
+}
+
+@utility icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+  transition: all 0.2s ease;
+  &:hover {
+    color: hsl(var(--accent));
+    border-color: hsl(var(--accent) / 0.6);
+  }
+}
+
+@utility dropcap {
+  & .dropcap-letter {
+    float: left;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 4.25rem;
+    line-height: 0.9;
+    padding: 0.35rem 0.6rem 0 0;
+    color: hsl(var(--accent));
+  }
+}
